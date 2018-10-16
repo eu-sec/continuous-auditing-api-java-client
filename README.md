@@ -26,7 +26,7 @@ Add this dependency to your project's POM:
 
 ```xml
 <dependency>
-    <groupId>eu.eusec</groupId>
+    <groupId>eu.sec.cert</groupId>
     <artifactId>continuous-auditing-api-java-client</artifactId>
     <version>1.0.5</version>
     <scope>compile</scope>
@@ -38,7 +38,7 @@ Add this dependency to your project's POM:
 Add this dependency to your project's build file:
 
 ```groovy
-compile "eu.eusec:continuous-auditing-api-java-client:1.0.5"
+compile "eu.sec.cert:continuous-auditing-api-java-client:1.0.5"
 ```
 
 ### Others

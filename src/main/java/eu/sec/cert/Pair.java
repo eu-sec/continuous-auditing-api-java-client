@@ -13,7 +13,7 @@
 
 package eu.sec.cert;
 
-@javax.annotation.Generated(value = "io.swagger.codegen.languages.JavaClientCodegen", date = "2018-10-16T13:44:30.652+02:00")
+@javax.annotation.Generated(value = "io.swagger.codegen.languages.JavaClientCodegen", date = "2018-10-16T13:48:25.853+02:00")
 public class Pair {
     private String name = "";
     private String value = "";

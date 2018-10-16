@@ -1,6 +1,6 @@
 lazy val root = (project in file(".")).
   settings(
-    organization := "eu.eusec",
+    organization := "eu.sec.cert",
     name := "continuous-auditing-api-java-client",
     version := "1.0.5",
     scalaVersion := "2.11.4",
