@@ -9,7 +9,7 @@ Method | HTTP request | Description
 
 <a name="getObjects"></a>
 # **getObjects**
-> ObjectResponse getObjects(scope, from, limit)
+> ObjectResponse getObjects(scope, from, to, limit)
 
 Returns Object ids of all objects that are in the scope of the audit.
 
@@ -34,10 +34,11 @@ api_key.setApiKey("YOUR API KEY");
 
 CaApiObjectsApi apiInstance = new CaApiObjectsApi();
 String scope = "scope_example"; // String | Scope of service
-String from = "from_example"; // String | in ISO-8601 formart
+String from = "from_example"; // String | in ISO-8601 formart. Timestamp refers to the last change of the object. e.g 2005-08-15T15:52:01+0000
+String to = "to_example"; // String | in ISO-8601 formart Timestamp refers to the last change of the object. e.g 2005-08-15T15:52:01+0000
 Integer limit = 56; // Integer | Limits the number of retuned values
 try {
-    ObjectResponse result = apiInstance.getObjects(scope, from, limit);
+    ObjectResponse result = apiInstance.getObjects(scope, from, to, limit);
     System.out.println(result);
 } catch (ApiException e) {
     System.err.println("Exception when calling CaApiObjectsApi#getObjects");
@@ -50,7 +51,8 @@ try {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **scope** | **String**| Scope of service |
- **from** | **String**| in ISO-8601 formart | [optional]
+ **from** | **String**| in ISO-8601 formart. Timestamp refers to the last change of the object. e.g 2005-08-15T15:52:01+0000 | [optional]
+ **to** | **String**| in ISO-8601 formart Timestamp refers to the last change of the object. e.g 2005-08-15T15:52:01+0000 | [optional]
  **limit** | **Integer**| Limits the number of retuned values | [optional]
 
 ### Return type

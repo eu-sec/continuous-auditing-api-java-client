@@ -20,42 +20,35 @@ import com.google.gson.annotations.JsonAdapter;
 import com.google.gson.annotations.SerializedName;
 import com.google.gson.stream.JsonReader;
 import com.google.gson.stream.JsonWriter;
-import eu.sec.cert.model.LocationStorageResponseStorages;
+import eu.sec.cert.model.PasswordRequirementsResponsePasswordRequirements;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 import java.io.IOException;
-import java.util.ArrayList;
-import java.util.List;
 
 /**
- * LocationStorageResponse
+ * PasswordRequirementsResponse
  */
 @javax.annotation.Generated(value = "io.swagger.codegen.languages.JavaClientCodegen", date = "2019-03-11T14:46:49.847+01:00")
-public class LocationStorageResponse {
-  @SerializedName("storages")
-  private List<LocationStorageResponseStorages> storages = new ArrayList<LocationStorageResponseStorages>();
+public class PasswordRequirementsResponse {
+  @SerializedName("passwordRequirements")
+  private PasswordRequirementsResponsePasswordRequirements passwordRequirements = null;
 
-  public LocationStorageResponse storages(List<LocationStorageResponseStorages> storages) {
-    this.storages = storages;
-    return this;
-  }
-
-  public LocationStorageResponse addStoragesItem(LocationStorageResponseStorages storagesItem) {
-    this.storages.add(storagesItem);
+  public PasswordRequirementsResponse passwordRequirements(PasswordRequirementsResponsePasswordRequirements passwordRequirements) {
+    this.passwordRequirements = passwordRequirements;
     return this;
   }
 
    /**
-   * Get storages
-   * @return storages
+   * Get passwordRequirements
+   * @return passwordRequirements
   **/
-  @ApiModelProperty(example = "[{\"uri\":\"i-0434c5582f2853d0c\",\"type\":\"service\",\"description\":\"AWS EC2 insctance\"},{\"uri\":\"vol-04b6088c76eb68a73\",\"type\":\"service\",\"description\":\"AWS EBS instance\"},{\"uri\":\"jdbc:mysql://192.168.0.10/SuperDB\",\"type\":\"database\"}]", required = true, value = "")
-  public List<LocationStorageResponseStorages> getStorages() {
-    return storages;
+  @ApiModelProperty(value = "")
+  public PasswordRequirementsResponsePasswordRequirements getPasswordRequirements() {
+    return passwordRequirements;
   }
 
-  public void setStorages(List<LocationStorageResponseStorages> storages) {
-    this.storages = storages;
+  public void setPasswordRequirements(PasswordRequirementsResponsePasswordRequirements passwordRequirements) {
+    this.passwordRequirements = passwordRequirements;
   }
 
 
@@ -67,22 +60,22 @@ public class LocationStorageResponse {
     if (o == null || getClass() != o.getClass()) {
       return false;
     }
-    LocationStorageResponse locationStorageResponse = (LocationStorageResponse) o;
-    return Objects.equals(this.storages, locationStorageResponse.storages);
+    PasswordRequirementsResponse passwordRequirementsResponse = (PasswordRequirementsResponse) o;
+    return Objects.equals(this.passwordRequirements, passwordRequirementsResponse.passwordRequirements);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(storages);
+    return Objects.hash(passwordRequirements);
   }
 
 
   @Override
   public String toString() {
     StringBuilder sb = new StringBuilder();
-    sb.append("class LocationStorageResponse {\n");
+    sb.append("class PasswordRequirementsResponse {\n");
     
-    sb.append("    storages: ").append(toIndentedString(storages)).append("\n");
+    sb.append("    passwordRequirements: ").append(toIndentedString(passwordRequirements)).append("\n");
     sb.append("}");
     return sb.toString();
   }

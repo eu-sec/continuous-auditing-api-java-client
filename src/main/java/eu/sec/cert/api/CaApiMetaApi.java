@@ -27,7 +27,7 @@ import com.google.gson.reflect.TypeToken;
 import java.io.IOException;
 
 
-import eu.sec.cert.model.ScopeResponse;
+import eu.sec.cert.model.SubmittedResponse;
 
 import java.lang.reflect.Type;
 import java.util.ArrayList;
@@ -35,14 +35,14 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-public class CaApiScopeApi {
+public class CaApiMetaApi {
     private ApiClient apiClient;
 
-    public CaApiScopeApi() {
+    public CaApiMetaApi() {
         this(Configuration.getDefaultApiClient());
     }
 
-    public CaApiScopeApi(ApiClient apiClient) {
+    public CaApiMetaApi(ApiClient apiClient) {
         this.apiClient = apiClient;
     }
 
@@ -55,17 +55,19 @@ public class CaApiScopeApi {
     }
 
     /**
-     * Build call for getScopes
+     * Build call for getSubmitted
+     * @param scope Scope of the service (required)
      * @param progressListener Progress listener
      * @param progressRequestListener Progress request listener
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
      */
-    public com.squareup.okhttp.Call getScopesCall(final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
+    public com.squareup.okhttp.Call getSubmittedCall(String scope, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
         Object localVarPostBody = null;
 
         // create path and map variables
-        String localVarPath = "/scopes/";
+        String localVarPath = "/{scope}/meta/submitted"
+            .replaceAll("\\{" + "scope" + "\\}", apiClient.escapeString(scope.toString()));
 
         List<Pair> localVarQueryParams = new ArrayList<Pair>();
         List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
@@ -103,45 +105,53 @@ public class CaApiScopeApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private com.squareup.okhttp.Call getScopesValidateBeforeCall(final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
+    private com.squareup.okhttp.Call getSubmittedValidateBeforeCall(String scope, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
+        
+        // verify the required parameter 'scope' is set
+        if (scope == null) {
+            throw new ApiException("Missing the required parameter 'scope' when calling getSubmitted(Async)");
+        }
         
 
-        com.squareup.okhttp.Call call = getScopesCall(progressListener, progressRequestListener);
+        com.squareup.okhttp.Call call = getSubmittedCall(scope, progressListener, progressRequestListener);
         return call;
 
     }
 
     /**
-     * Returns all scopes of the cloud service
-     * Returns the available scopes for the cloud service. The scope corresponds often with the layers of the cloud service architecture like IaaS, PaaS, SaaS.
-     * @return ScopeResponse
+     * Returns a list of administrators
+     * Based on CCM-IVS-01. Gives information on when certain documents have been pushed dedicated endpoints of the customer
+     * @param scope Scope of the service (required)
+     * @return SubmittedResponse
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    public ScopeResponse getScopes() throws ApiException {
-        ApiResponse<ScopeResponse> resp = getScopesWithHttpInfo();
+    public SubmittedResponse getSubmitted(String scope) throws ApiException {
+        ApiResponse<SubmittedResponse> resp = getSubmittedWithHttpInfo(scope);
         return resp.getData();
     }
 
     /**
-     * Returns all scopes of the cloud service
-     * Returns the available scopes for the cloud service. The scope corresponds often with the layers of the cloud service architecture like IaaS, PaaS, SaaS.
-     * @return ApiResponse&lt;ScopeResponse&gt;
+     * Returns a list of administrators
+     * Based on CCM-IVS-01. Gives information on when certain documents have been pushed dedicated endpoints of the customer
+     * @param scope Scope of the service (required)
+     * @return ApiResponse&lt;SubmittedResponse&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    public ApiResponse<ScopeResponse> getScopesWithHttpInfo() throws ApiException {
-        com.squareup.okhttp.Call call = getScopesValidateBeforeCall(null, null);
-        Type localVarReturnType = new TypeToken<ScopeResponse>(){}.getType();
+    public ApiResponse<SubmittedResponse> getSubmittedWithHttpInfo(String scope) throws ApiException {
+        com.squareup.okhttp.Call call = getSubmittedValidateBeforeCall(scope, null, null);
+        Type localVarReturnType = new TypeToken<SubmittedResponse>(){}.getType();
         return apiClient.execute(call, localVarReturnType);
     }
 
     /**
-     * Returns all scopes of the cloud service (asynchronously)
-     * Returns the available scopes for the cloud service. The scope corresponds often with the layers of the cloud service architecture like IaaS, PaaS, SaaS.
+     * Returns a list of administrators (asynchronously)
+     * Based on CCM-IVS-01. Gives information on when certain documents have been pushed dedicated endpoints of the customer
+     * @param scope Scope of the service (required)
      * @param callback The callback to be executed when the API call finishes
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
      */
-    public com.squareup.okhttp.Call getScopesAsync(final ApiCallback<ScopeResponse> callback) throws ApiException {
+    public com.squareup.okhttp.Call getSubmittedAsync(String scope, final ApiCallback<SubmittedResponse> callback) throws ApiException {
 
         ProgressResponseBody.ProgressListener progressListener = null;
         ProgressRequestBody.ProgressRequestListener progressRequestListener = null;
@@ -162,8 +172,8 @@ public class CaApiScopeApi {
             };
         }
 
-        com.squareup.okhttp.Call call = getScopesValidateBeforeCall(progressListener, progressRequestListener);
-        Type localVarReturnType = new TypeToken<ScopeResponse>(){}.getType();
+        com.squareup.okhttp.Call call = getSubmittedValidateBeforeCall(scope, progressListener, progressRequestListener);
+        Type localVarReturnType = new TypeToken<SubmittedResponse>(){}.getType();
         apiClient.executeAsync(call, localVarReturnType, callback);
         return call;
     }

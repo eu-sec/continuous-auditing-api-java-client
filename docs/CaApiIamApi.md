@@ -6,6 +6,7 @@ Method | HTTP request | Description
 ------------- | ------------- | -------------
 [**getAdmins**](CaApiIamApi.md#getAdmins) | **GET** /{scope}/identityfederation/admins/ | Returns a list of administrators
 [**getObjectAccess**](CaApiIamApi.md#getObjectAccess) | **POST** /{scope}/identityfederation/data/access | Checks whether a user has a certain access to an object.
+[**getPasswordRequirements**](CaApiIamApi.md#getPasswordRequirements) | **GET** /{scope}/identityfederation/{userId}/passwordRequirements | returns the password requirements for a specific user
 [**getUserAccesses**](CaApiIamApi.md#getUserAccesses) | **GET** /{scope}/identityfederation/{userId}/logins | Returns a list of the last logins of a user
 [**getUserAuthType**](CaApiIamApi.md#getUserAuthType) | **GET** /{scope}/identityfederation/{userId}/auth | Returns the authentication type of a user. E.g password, two-factor
 [**getUserOrganisation**](CaApiIamApi.md#getUserOrganisation) | **GET** /{scope}/identityfederation/{userId}/groups | Returns the groups of a user
@@ -123,9 +124,66 @@ Name | Type | Description  | Notes
  - **Content-Type**: Not defined
  - **Accept**: application/json
 
+<a name="getPasswordRequirements"></a>
+# **getPasswordRequirements**
+> PasswordRequirementsResponse getPasswordRequirements(userId, scope)
+
+returns the password requirements for a specific user
+
+Based on CCM-IAM-12. Strong authentication might require a strong password. Password requirements are a indicator for strong password and therefore can be part of an audit.
+
+### Example
+```java
+// Import classes:
+//import eu.sec.cert.ApiClient;
+//import eu.sec.cert.ApiException;
+//import eu.sec.cert.Configuration;
+//import eu.sec.cert.auth.*;
+//import eu.sec.cert.api.CaApiIamApi;
+
+ApiClient defaultClient = Configuration.getDefaultApiClient();
+
+// Configure API key authorization: api_key
+ApiKeyAuth api_key = (ApiKeyAuth) defaultClient.getAuthentication("api_key");
+api_key.setApiKey("YOUR API KEY");
+// Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
+//api_key.setApiKeyPrefix("Token");
+
+CaApiIamApi apiInstance = new CaApiIamApi();
+String userId = "userId_example"; // String | ID of user
+String scope = "scope_example"; // String | Scope of the service
+try {
+    PasswordRequirementsResponse result = apiInstance.getPasswordRequirements(userId, scope);
+    System.out.println(result);
+} catch (ApiException e) {
+    System.err.println("Exception when calling CaApiIamApi#getPasswordRequirements");
+    e.printStackTrace();
+}
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **userId** | **String**| ID of user |
+ **scope** | **String**| Scope of the service |
+
+### Return type
+
+[**PasswordRequirementsResponse**](PasswordRequirementsResponse.md)
+
+### Authorization
+
+[api_key](../README.md#api_key)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json
+
 <a name="getUserAccesses"></a>
 # **getUserAccesses**
-> LoginResponse getUserAccesses(userId, scope, from, limit)
+> LoginResponse getUserAccesses(userId, scope, from, to, limit)
 
 Returns a list of the last logins of a user
 
@@ -151,10 +209,11 @@ api_key.setApiKey("YOUR API KEY");
 CaApiIamApi apiInstance = new CaApiIamApi();
 String userId = "userId_example"; // String | ID of user
 String scope = "scope_example"; // String | Scope of the service
-String from = "from_example"; // String | from date in ISO-8601 format
+String from = "from_example"; // String | from date in ISO-8601 format e.g 2005-08-15T15:52:01+0000
+String to = "to_example"; // String | to date in ISO-8601 format  e.g 2005-08-15T15:52:01+0000
 Integer limit = 56; // Integer | Limits the number of retuned values
 try {
-    LoginResponse result = apiInstance.getUserAccesses(userId, scope, from, limit);
+    LoginResponse result = apiInstance.getUserAccesses(userId, scope, from, to, limit);
     System.out.println(result);
 } catch (ApiException e) {
     System.err.println("Exception when calling CaApiIamApi#getUserAccesses");
@@ -168,7 +227,8 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **userId** | **String**| ID of user |
  **scope** | **String**| Scope of the service |
- **from** | **String**| from date in ISO-8601 format | [optional]
+ **from** | **String**| from date in ISO-8601 format e.g 2005-08-15T15:52:01+0000 | [optional]
+ **to** | **String**| to date in ISO-8601 format  e.g 2005-08-15T15:52:01+0000 | [optional]
  **limit** | **Integer**| Limits the number of retuned values | [optional]
 
 ### Return type

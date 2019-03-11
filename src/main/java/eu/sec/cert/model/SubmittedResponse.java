@@ -20,7 +20,7 @@ import com.google.gson.annotations.JsonAdapter;
 import com.google.gson.annotations.SerializedName;
 import com.google.gson.stream.JsonReader;
 import com.google.gson.stream.JsonWriter;
-import eu.sec.cert.model.LocationStorageResponseStorages;
+import eu.sec.cert.model.SubmittedResponseItems;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 import java.io.IOException;
@@ -28,34 +28,37 @@ import java.util.ArrayList;
 import java.util.List;
 
 /**
- * LocationStorageResponse
+ * SubmittedResponse
  */
 @javax.annotation.Generated(value = "io.swagger.codegen.languages.JavaClientCodegen", date = "2019-03-11T14:46:49.847+01:00")
-public class LocationStorageResponse {
-  @SerializedName("storages")
-  private List<LocationStorageResponseStorages> storages = new ArrayList<LocationStorageResponseStorages>();
+public class SubmittedResponse {
+  @SerializedName("items")
+  private List<SubmittedResponseItems> items = null;
 
-  public LocationStorageResponse storages(List<LocationStorageResponseStorages> storages) {
-    this.storages = storages;
+  public SubmittedResponse items(List<SubmittedResponseItems> items) {
+    this.items = items;
     return this;
   }
 
-  public LocationStorageResponse addStoragesItem(LocationStorageResponseStorages storagesItem) {
-    this.storages.add(storagesItem);
+  public SubmittedResponse addItemsItem(SubmittedResponseItems itemsItem) {
+    if (this.items == null) {
+      this.items = new ArrayList<SubmittedResponseItems>();
+    }
+    this.items.add(itemsItem);
     return this;
   }
 
    /**
-   * Get storages
-   * @return storages
+   * Get items
+   * @return items
   **/
-  @ApiModelProperty(example = "[{\"uri\":\"i-0434c5582f2853d0c\",\"type\":\"service\",\"description\":\"AWS EC2 insctance\"},{\"uri\":\"vol-04b6088c76eb68a73\",\"type\":\"service\",\"description\":\"AWS EBS instance\"},{\"uri\":\"jdbc:mysql://192.168.0.10/SuperDB\",\"type\":\"database\"}]", required = true, value = "")
-  public List<LocationStorageResponseStorages> getStorages() {
-    return storages;
+  @ApiModelProperty(value = "")
+  public List<SubmittedResponseItems> getItems() {
+    return items;
   }
 
-  public void setStorages(List<LocationStorageResponseStorages> storages) {
-    this.storages = storages;
+  public void setItems(List<SubmittedResponseItems> items) {
+    this.items = items;
   }
 
 
@@ -67,22 +70,22 @@ public class LocationStorageResponse {
     if (o == null || getClass() != o.getClass()) {
       return false;
     }
-    LocationStorageResponse locationStorageResponse = (LocationStorageResponse) o;
-    return Objects.equals(this.storages, locationStorageResponse.storages);
+    SubmittedResponse submittedResponse = (SubmittedResponse) o;
+    return Objects.equals(this.items, submittedResponse.items);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(storages);
+    return Objects.hash(items);
   }
 
 
   @Override
   public String toString() {
     StringBuilder sb = new StringBuilder();
-    sb.append("class LocationStorageResponse {\n");
+    sb.append("class SubmittedResponse {\n");
     
-    sb.append("    storages: ").append(toIndentedString(storages)).append("\n");
+    sb.append("    items: ").append(toIndentedString(items)).append("\n");
     sb.append("}");
     return sb.toString();
   }

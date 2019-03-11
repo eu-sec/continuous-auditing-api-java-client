@@ -14,7 +14,7 @@
 package eu.sec.cert.api;
 
 import eu.sec.cert.ApiException;
-import eu.sec.cert.model.ScopeResponse;
+import eu.sec.cert.model.SubmittedResponse;
 import org.junit.Test;
 import org.junit.Ignore;
 
@@ -24,25 +24,26 @@ import java.util.List;
 import java.util.Map;
 
 /**
- * API tests for CaApiScopeApi
+ * API tests for CaApiMetaApi
  */
 @Ignore
-public class CaApiScopeApiTest {
+public class CaApiMetaApiTest {
 
-    private final CaApiScopeApi api = new CaApiScopeApi();
+    private final CaApiMetaApi api = new CaApiMetaApi();
 
     
     /**
-     * Returns all scopes of the cloud service
+     * Returns a list of administrators
      *
-     * Returns the available scopes for the cloud service. The scope corresponds often with the layers of the cloud service architecture like IaaS, PaaS, SaaS.
+     * Based on CCM-IVS-01. Gives information on when certain documents have been pushed dedicated endpoints of the customer
      *
      * @throws ApiException
      *          if the Api call fails
      */
     @Test
-    public void getScopesTest() throws ApiException {
-        ScopeResponse response = api.getScopes();
+    public void getSubmittedTest() throws ApiException {
+        String scope = null;
+        SubmittedResponse response = api.getSubmitted(scope);
 
         // TODO: test validations
     }
