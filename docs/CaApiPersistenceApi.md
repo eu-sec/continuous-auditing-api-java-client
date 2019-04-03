@@ -34,6 +34,11 @@ api_key.setApiKey("YOUR API KEY");
 // Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
 //api_key.setApiKeyPrefix("Token");
 
+// Configure HTTP basic authorization: basic_auth
+HttpBasicAuth basic_auth = (HttpBasicAuth) defaultClient.getAuthentication("basic_auth");
+basic_auth.setUsername("YOUR USERNAME");
+basic_auth.setPassword("YOUR PASSWORD");
+
 CaApiPersistenceApi apiInstance = new CaApiPersistenceApi();
 String objectId = "objectId_example"; // String | ID of either objectId on SaaS level or storeageId on lower level
 String scope = "scope_example"; // String | Scope of the service
@@ -59,7 +64,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[api_key](../README.md#api_key)
+[api_key](../README.md#api_key), [basic_auth](../README.md#basic_auth)
 
 ### HTTP request headers
 
@@ -91,6 +96,11 @@ api_key.setApiKey("YOUR API KEY");
 // Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
 //api_key.setApiKeyPrefix("Token");
 
+// Configure HTTP basic authorization: basic_auth
+HttpBasicAuth basic_auth = (HttpBasicAuth) defaultClient.getAuthentication("basic_auth");
+basic_auth.setUsername("YOUR USERNAME");
+basic_auth.setPassword("YOUR PASSWORD");
+
 CaApiPersistenceApi apiInstance = new CaApiPersistenceApi();
 String objectId = "objectId_example"; // String | ID of either objectId on SaaS level or storeageId on lower level
 String scope = "scope_example"; // String | Scope of the service
@@ -116,7 +126,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[api_key](../README.md#api_key)
+[api_key](../README.md#api_key), [basic_auth](../README.md#basic_auth)
 
 ### HTTP request headers
 
@@ -148,6 +158,11 @@ api_key.setApiKey("YOUR API KEY");
 // Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
 //api_key.setApiKeyPrefix("Token");
 
+// Configure HTTP basic authorization: basic_auth
+HttpBasicAuth basic_auth = (HttpBasicAuth) defaultClient.getAuthentication("basic_auth");
+basic_auth.setUsername("YOUR USERNAME");
+basic_auth.setPassword("YOUR PASSWORD");
+
 CaApiPersistenceApi apiInstance = new CaApiPersistenceApi();
 String objectId = "objectId_example"; // String | ID of data object to return
 String scope = "scope_example"; // String | Scope of service
@@ -173,7 +188,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[api_key](../README.md#api_key)
+[api_key](../README.md#api_key), [basic_auth](../README.md#basic_auth)
 
 ### HTTP request headers
 

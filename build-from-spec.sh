@@ -1,6 +1,6 @@
 #!/bin/bash
 # NOTE: for new releases, please adjust the version
-VERSION=1.0.7
+VERSION=1.0.8
 
 # download specific yaml file
 wget https://raw.githubusercontent.com/eu-sec/continuous-auditing-api-spec/$VERSION/swagger.yaml -O eu-sec-$VERSION.yaml

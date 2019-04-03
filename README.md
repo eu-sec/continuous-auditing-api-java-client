@@ -1,8 +1,8 @@
 # continuous-auditing-api-java-client
 
 EU-SEC CA API
-- API version: 1.0.7
-  - Build date: 2019-03-11T14:46:49.847+01:00
+- API version: 1.0.8
+  - Build date: 2019-04-03T09:38:29.538+02:00
 
 This is audit-api serves evidences for a continuous audit. In the EU-Sec project such evidences are collected and evaluated to determine the compliance status based on controls from the    [ccm](https://cloudsecurityalliance.org/group/cloud-controls-matrix).
 
@@ -41,7 +41,7 @@ Add this dependency to your project's POM:
 <dependency>
   <groupId>eu.sec.cert</groupId>
   <artifactId>continuous-auditing-api-java-client</artifactId>
-  <version>1.0.7</version>
+  <version>1.0.8</version>
   <scope>compile</scope>
 </dependency>
 ```
@@ -51,7 +51,7 @@ Add this dependency to your project's POM:
 Add this dependency to your project's build file:
 
 ```groovy
-compile "eu.sec.cert:continuous-auditing-api-java-client:1.0.7"
+compile "eu.sec.cert:continuous-auditing-api-java-client:1.0.8"
 ```
 
 ### Others
@@ -64,7 +64,7 @@ mvn clean package
 
 Then manually install the following JARs:
 
-* `target/continuous-auditing-api-java-client-1.0.7.jar`
+* `target/continuous-auditing-api-java-client-1.0.8.jar`
 * `target/lib/*.jar`
 
 ## Getting Started
@@ -91,6 +91,11 @@ public class CaApiIamApiExample {
         api_key.setApiKey("YOUR API KEY");
         // Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
         //api_key.setApiKeyPrefix("Token");
+
+        // Configure HTTP basic authorization: basic_auth
+        HttpBasicAuth basic_auth = (HttpBasicAuth) defaultClient.getAuthentication("basic_auth");
+        basic_auth.setUsername("YOUR USERNAME");
+        basic_auth.setPassword("YOUR PASSWORD");
 
         CaApiIamApi apiInstance = new CaApiIamApi();
         String scope = "scope_example"; // String | Scope of the service

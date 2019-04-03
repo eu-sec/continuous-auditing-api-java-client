@@ -32,6 +32,11 @@ api_key.setApiKey("YOUR API KEY");
 // Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
 //api_key.setApiKeyPrefix("Token");
 
+// Configure HTTP basic authorization: basic_auth
+HttpBasicAuth basic_auth = (HttpBasicAuth) defaultClient.getAuthentication("basic_auth");
+basic_auth.setUsername("YOUR USERNAME");
+basic_auth.setPassword("YOUR PASSWORD");
+
 CaApiMetaApi apiInstance = new CaApiMetaApi();
 String scope = "scope_example"; // String | Scope of the service
 try {
@@ -55,7 +60,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[api_key](../README.md#api_key)
+[api_key](../README.md#api_key), [basic_auth](../README.md#basic_auth)
 
 ### HTTP request headers
 
