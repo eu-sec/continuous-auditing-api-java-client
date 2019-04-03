@@ -704,14 +704,14 @@ public class ApiClient {
             return null;
         }
 
-        String contentType = response.headers().get("Content-Type");
+        /*String contentType = response.headers().get("Content-Type");
         if (contentType == null) {
             // ensuring a default content type
             contentType = "application/json";
         }
-        if (isJsonMime(contentType)) {
+        if (isJsonMime(contentType)) {*/
             return json.deserialize(respBody, returnType);
-        } else if (returnType.equals(String.class)) {
+        /*} else if (returnType.equals(String.class)) {
             // Expecting string, return the raw response body.
             return (T) respBody;
         } else {
@@ -720,7 +720,7 @@ public class ApiClient {
                     response.code(),
                     response.headers().toMultimap(),
                     respBody);
-        }
+        }*/
     }
 
     /**
