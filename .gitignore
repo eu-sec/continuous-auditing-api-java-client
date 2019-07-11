@@ -28,3 +28,6 @@ build
 .vscode
 eu-sec-*.yaml
 .idea
+
+gradle.properties
+
